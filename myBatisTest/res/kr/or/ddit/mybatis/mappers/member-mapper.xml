@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 MyBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper>태그의 namespace속성값은 Java에서 SQL문을 호출할 때
+	 사용되는 이름이다.
+ -->
+ 
+<mapper namespace="member">
+
+<!-- insert -->
+	<insert id="insertMember">
+	insert into mymember(mem_id, mem_pass, mem_name, mem_tel, mem_addr)
+		values(#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_tel}, #{mem_addr})
+	</insert>
+	
+<!-- delete -->
+	<delete id = "deleteMember" parameterType="String">
+	delete from mymember where mem_id = #{mem_id}
+	</delete>
+
+<!-- update -->
+	<update id="updateMember">
+	update mymember set mem_pass = #{mem_pass}, mem_name = #{mem_name}, mem_tel = #{mem_tel} , mem_addr = #{mem_addr}
+		where mem_id = #{mem_id}
+	</update>
+
+<!-- getAllMember -->
+   <select id="getAllMember">
+   select * from mymember
+   </select>
+
+<!-- getMemberCount -->
+	<select id="getMemberCount" parameterType = "String" resultType="int">
+		select count(*) cnt from mymember where mem_id = #{mem_id}
+	</select>
+
+<!-- updateMember2 -->
+
+
+
+</mapper>	
